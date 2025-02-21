@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import mongoose from "mongoose";
-const MONGODB_URL=process.env.MONGODB_URL!;
 
-if(!MONGODB_URL){
+import mongoose from "mongoose";
+const MONGODB_URI=process.env.MONGODB_URI!;
+
+if(!MONGODB_URI){
   throw new Error("Please define mongodb url in .env file");
 }
 
@@ -29,7 +29,7 @@ export async function connectToDatabase() {
 
     //if promise is there then connect it to mongoose
     cached.promise=mongoose
-    .connect(MONGODB_URL,opts)
+    .connect(MONGODB_URI,opts)
     .then(()=>mongoose.connection);
   }
 
